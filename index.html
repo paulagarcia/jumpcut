@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no">
+    <!-- Link to external Style Sheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Link to Font Awesome for the search icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts Open Sans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <title>Jumpcut Part One</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="search-container">
+
+        <!-- Search Button -->
+        <button type="button" class="search-button" onclick="showSearch()">
+          <i class="fa fa-search"></i>
+            Search
+        </button>
+
+        <!-- Search Input Section-->
+        <div class="search-section" id="seach-section">
+          <input type="text" id="search" onkeyup="searchFunction()" placeholder="Type to start searching" title="Autofill search">
+          <ul id="search-list">
+            <li>Partial Match</li>
+            <li id="autofill">Autofill Match</li>
+            <li>Other Match</li>
+          </ul>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal" id="pop-up-modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+              <h2>Autofill Match</h2>
+            </div>
+            <div class="modal-body">
+              <p>Hello!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="modal-button" onclick="closeModal()"> Cancel </button>
+              <button type="button" class="modal-button" onclick="closeModal()"> Proceed </button>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+    <script>
+      // On click Start button, show de search fields
+      // Solution supported in Internet Explorer 9
+      function showSearch(){
+        var section, name, arr;
+        section = document.getElementById("seach-section");
+        name = "show";
+        arr = section.className.split(" ");
+        if (arr.indexOf(name) == -1) {
+          section.className += " " + name;
+        }
+      }
+
+      // Search from the user writing on the list
+      function searchFunction() {
+          var input, filter, ul, li, i, txtValue;
+          input = document.getElementById("search");
+
+
+          filter = input.value.toUpperCase();
+          console.log(input.value.keyCode)
+          if (filter) {showModal();}
+          ul = document.getElementById("search-list");
+          li = ul.getElementsByTagName("li");
+          for (i = 0; i < li.length; i++) {
+              txtValue = li[i].textContent || li[i].innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+              } else {
+                  li[i].style.display = "none";
+              }
+          }
+      }
+
+      // Modal Close function
+      function closeModal(){
+        document.getElementById("pop-up-modal").style.display = "none"
+      }
+      // Modal Show function
+      function showModal(){
+        document.getElementById("pop-up-modal").style.display = "block"
+      }
+
+      // Show Modal when hover autofill option after some time
+      var autofill = document.getElementById("autofill");
+      var time_id;
+      autofill.addEventListener("mouseenter", function( event ) {
+        if (time_id) {
+          clearTimeout(time_id);
+        }
+        time_id = setTimeout(function () {
+          showModal();
+        }, 1500);
+        });
+
+      autofill.addEventListener("mouseleave", function( event ) {
+        clearTimeout(time_id);
+      })
+
+    </script>
+  </body>
+</html>

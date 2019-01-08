@@ -1,0 +1,189 @@
+/*--------------------------------------*/
+/* Gerenal Styles
+/*--------------------------------------*/
+* { box-sizing: border-box; }
+
+html,body{
+ 	margin: 0;
+ 	padding: 0;
+ 	font-family: 'Open Sans', sans-serif;
+  color: #131313;
+}
+button{
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+}
+button:focus, button:hover {
+  outline: none;
+}
+
+/*--------------------------------------*/
+/* Button First Page Styles
+/*--------------------------------------*/
+
+.main-container{
+  max-width: 1920px;
+	overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+.search-container{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.search-button{
+  background-color: #e80030;
+  text-transform: uppercase;
+  color: #f2f2f2;
+  padding: 0.5em 2em 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  position: relative;
+  border: none;
+  transition: transform 0.6s linear;
+  transform: scale(0.97, 0.93);
+  box-shadow: 0px 0px 20px 15px rgba(234, 40, 48, 0.15);
+}
+.search-button:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: solid 1px #bc88c8;
+  border-radius: 2rem;
+  margin: -3px;
+}
+.search-button:hover{
+  transform: scale(1,1);
+}
+.fa.fa-search{
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/*--------------------------------------*/
+/* Search Inputs Styles
+/*--------------------------------------*/
+.search-section{
+  display: none;
+  box-shadow: 0px 13px 20px 4px #eee;
+  margin-top: 2rem;
+}
+.search-section.show{
+  display: block;
+}
+#search {
+  width: 100%;
+  padding: 1em 2em;
+  font-size: 0.8rem;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-weight: 300;
+  text-transform: capitalize;
+  background-color: #ccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+#search:focus{
+  outline: none;
+}
+#search-list {
+  /* Remove default list styling */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#search-list li {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  padding: 0.8em;
+  text-decoration: none;
+  font-size: 18px;
+  color: initial;
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+#search-list li:last-child{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#search-list li:hover:not(.header) {
+  background-color: #ebebeb;
+}
+
+/*--------------------------------------*/
+/* Modal Styles
+/*--------------------------------------*/
+
+.modal{
+  background: #ccc;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  top: 13rem;
+  right: 50%;
+  transform: translate(50%);
+  box-shadow: 0px 13px 20px 4px #eee;
+}
+.modal-header{
+  border-bottom: 1px solid #ddd;
+}
+.modal-header h2{
+  text-align: left;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 1em;
+  margin: 0;
+  font-weight: 600;
+}
+.modal-body, .modal-button{
+  padding: 1.5rem 8rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.modal-footer{
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-button{
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+.modal-button:first-child{
+  border-right: 1px solid #ddd;
+}
+
+/*--------------------------------------*/
+/* Media Queries
+/*--------------------------------------*/
+
+@media (min-width: 550px){
+  .search-container{
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+  .search-section{
+    margin-right: 2rem;
+    margin-top: 0;
+  }
+  .modal{
+    top: 6rem;
+    right: 2rem;
+  }
+}
